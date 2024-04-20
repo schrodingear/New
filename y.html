@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>'Y' by Vibration</title>
+    <link rel="stylesheet" href="field.css">    
+    <style>
+        /* Add some basic styling to the table */
+        table {
+            width: 100%;
+            border-radius: 10px;
+        }
+        /* Apply rounded border to the table */
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 20px; /* Adjust the value to control the roundness */
+            border: 2px solid #000; /* Add a border to the table */
+        }
+
+        /* Style the table cells */
+        table td, table th {
+            padding: 7px; /* Add padding to the cells for better spacing */
+            border: 0.1px solid #565454; /* Add a border to the table cells */
+        }
+
+        th, td {    
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            font-size: 12px;    
+        }
+
+        th {
+            background-color: #000000;
+            color: white;
+        }
+        tr{
+            background-color: #dedfa6;
+        }
+
+        .editable {
+            background: transparent;
+            cursor: pointer;
+        }
+        form{
+            text-align: center;
+        }
+        .header-with-lines {
+            position: relative;
+            text-align: center; /* Center the text horizontally */
+        }
+        p{
+            font-size: small;
+        }
+
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+</head>
+<body>
+    
+    <a href="https://1drv.ms/v/s!AtL5EUcjMTiWgRGLeasMS6DtBcKz?e=DyIa0k" style="text-decoration: none; color: #ffffff;"><h1 style="text-align: center;" >'Y' by Vibration</h1></a>
+    <script> 
+    username = localStorage.getItem("username");
+
+    if (username) {
+      // Display the "Hello username" message
+      const greetingElement = document.createElement("p");
+      greetingElement.textContent = `Name: ${username}`;
+      document.body.appendChild(greetingElement);
+      greetingElement.style.fontSize = "20px";
+      greetingElement.style.textAlign = "center"
+      
+    } else {
+      // Handle the case when the username is not found
+      // (e.g., user did not log in)
+    }</script>
+
+    <fieldset>
+    <div style="padding-bottom: 10%;">
+        <p><br><br><b>Aim:</b> To determine the Young's Modulus of a wooden scale.</p>
+        <p>
+            <b>Apparatus:</b> Clamp, table, stopwatch, wooden (meter scale), telescope, pin, weights, etc.
+        </p>        
+        
+    </div>
+</fieldset>
+    <fieldset style="background-color: #ddd;text-align: center;"><img src="y.jpeg" alt="'Y' by vibration" style="width: 70%;">  </fieldset>
+
+    <br><br><br><br>
+    <a href="yproc.html">Procedure</a>
+
+
+</body>
+</html>

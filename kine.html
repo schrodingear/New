@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>C Code Example</title>
+</head>
+<body>
+    <h1>C Code Example</h1>
+
+    <h2>Program to Determine Position and Velocity Data Using Kinematic Equations in C</h2>
+
+    <pre>
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+
+int main()
+{
+    float v = 0, s, t, T, g = 9.8, u = 98;
+    T = (v - u) / (-g);
+    s = u * T + 0.5 * (-g) * T * T;
+    printf("Maximum height: %f m\nTime taken to reach maximum height: %f sec\n\n", s, T);
+
+    /* Stone moving upwards */
+    printf("Vertically upward direction\n");
+    for (t = 0; t <= T; ++t)
+    {
+        s = u * t + 0.5 * (-g) * t * t;
+        v = u - g * t;
+        printf("Position: %f, Velocity: %f\n", s, v);
+    }
+
+    /* Stone moving downwards */
+    printf("\nVertically downward direction\n");
+    u = 0;
+    for (t = 0; t <= T; ++t)
+    {
+        s = u * t + 0.5 * g * t * t;
+        v = u + g * t;
+        printf("Position: %f, Velocity: %f\n", s, v);
+    }
+    getch();
+}
+    </pre>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>C Code Example</title>
+</head>
+<body>
+    <h1>C Code Example</h1>
+
+    <h2>Simpson's One-Third Method for Numerical Integration in C</h2>
+
+    <pre>
+#include &lt;stdio.h&gt;
+#define f(x) (5*x*x*x-3*x*x+2*x+1)
+
+int main()
+{
+    int i, n;
+    float x0, xn;
+    float h, x, integral, sum = 0;
+
+    printf("Enter initial and final limits of integration: ");
+    scanf("%f %f", &x0, &xn);
+    printf("Enter n:");
+    scanf("%d", &n);
+
+    h = (xn - x0) / n;
+    sum = sum + f(x0) + f(xn);
+
+    for (i = 1; i < n; i++)
+    {
+        x = x0 + i * h;
+        if (i % 2 == 0)
+            sum = sum + 2 * f(x);
+        else
+            sum = sum + 4 * f(x);
+    }
+
+    integral = sum * h / 3;
+    printf("The integral of the given function is %f", integral);
+
+    return 0;
+}
+    </pre>
+</body>
+</html>

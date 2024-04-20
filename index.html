@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login * AGC</title>
+    <style>
+        body{
+            text-align: center;
+            padding-top: 30%;
+            background-image: url('back.jpeg');
+        }
+        fieldset {
+  margin: 20px;
+  padding: 0 10px 10px;
+  border: 1px solid #666;
+  border-radius: 20px;
+  box-shadow: 0 0 10px #666;
+  padding-top: 10px;
+  
+}
+/* CSS */
+.button-85 {
+  padding: 0.6em 2em;
+  border-color: #666;
+  
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  
+  border-radius: 10px;
+  
+  touch-action: manipulation;
+}
+input{
+    border-radius: 10px;
+    text-align: center;
+    height: 30px;
+    font-size: 100%;
+
+}
+p, a{
+    color: rgb(113, 114, 110);
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-size: 20px;
+    font-weight: bolder;
+
+}
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@600&display=swap');
+    </style>
+</head>
+<body>
+    <fieldset style="background-color: white">
+    <img src="haha.png" style="width: 50%;"><br>
+
+    <p> DIGITAL LABORATORY</p>
+    <form id="loginForm">
+        <input type="text" id="username" placeholder="Your name/ Admin" required><br><br>
+        <input type="password" id="password" placeholder="Roll Number/ 8600" required><br><br><br>
+        <button class="button-85" role="button">Login</button><br><br>
+        <a href="#" id="forgotPassword" style="color: aliceblue; text-align: right;">Forgot Password?</a> 
+    </form>
+</fieldset> <br>
+
+    <script>
+        // Define the username-password pairs
+        const credentials = {
+            Gauri: "8601",
+            Sakshi: "8602",
+            Suraj: "8603",
+            Harshad: "8604",
+            Satish: "8605",
+            Sanika: "8606",
+            Sahil: "8607",
+            Vedant: "8608",
+            Rigveda: "8609",
+            Sharika: "8610",
+            Radha: "8611",
+            Mihir: "8612",
+            Avantika: "8613",
+            Omkar: "8614",
+            Urvee: "8615",
+            Vyankateshwar: "8616",
+            Shreyash: "8617",
+            Prajot: "8618",
+            Priti: "8619",
+            Rutik: "8620",
+            Divya: "8621",
+            Komal: "8622",
+            Rushikesh: "8623",
+            Sarvesh: "8624",
+            Neha: "8625",
+            Jagruti: "8626",
+            Shravani: "8627",
+            Tejashree: "8628",
+            Aishwarya: "8629",
+            Devraj: "8630",
+            Pratiksha: "8631",
+            Shital: "8632",
+            Shraddha: "8633",
+            Akshay: "8634",
+            Pranav: "8635",
+            Parth: "8636",
+            Jayesh: "8637",
+            Atharva: "8638",
+            Vivek: "8639",
+            Aditya: "8640",
+            Srushti: "8641",
+            Kalpesh: "8642",
+            Ruturaj: "8643",
+            Asmita: "8644",
+            Admin: "8600"
+            //password pairs as needed
+        };
+
+        // Add an event listener for form submission
+        const loginForm = document.getElementById("loginForm");
+        loginForm.addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevent the form from submitting normally
+
+            // Get the values entered by the user
+            const enteredUsername = document.getElementById("username").value;
+            const enteredPassword = document.getElementById("password").value;
+
+            // Check if the entered credentials match the defined pairs
+            if (credentials.hasOwnProperty(enteredUsername) && credentials[enteredUsername] === enteredPassword) {
+                localStorage.setItem("username", enteredUsername);
+                
+
+        // Redirect to page2.html
+        window.location.href = "home.html";
+            } else {
+                alert("Invalid credentials. Please try again.");
+            }
+        });
+        const forgotPasswordLink = document.getElementById("forgotPassword");
+        forgotPasswordLink.addEventListener("click", function (e) {
+            e.preventDefault(); // Prevent the link from navigating
+
+            // Display a popup asking the user to contact their department
+            alert("It's impossible bruh");
+        });
+        
+        
+
+    </script>
+</body>
+</html>

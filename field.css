@@ -1,0 +1,19 @@
+fieldset{
+    border-radius: 2cm;
+    padding-left: 20px;
+    background-color: black;
+    color: aliceblue;
+    margin: 20px;
+  border: 1px solid #666;
+  box-shadow: 0 0 10px #666;
+  padding-top: 10px;
+  box-shadow: 0 8px 6px -6px black;
+
+  
+}
+body{
+    background-color: rgb(35, 35, 35);
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-size: 15px;    
+    color: white;
+}

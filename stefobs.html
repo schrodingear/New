@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+ 
+</head>
+<body>
+    <p style="font-size: large;"><strong>Table 1:</strong>To find total power and resistance.</p><br><br>
+
+    <table border="1">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Voltage (V)</th>
+            <th>Current (mA)</th>
+            <th>Resistance (Ohms)</th>
+            <th>Total Power (mW)</th>
+          </tr>
+        </thead>
+        <tbody id="ohmsTableBody">
+          <!-- Rows will be generated dynamically -->
+        </tbody>
+      </table>
+    
+      <div>
+        <label for="voltageInput">Enter Voltage (V):</label>
+        <input type="number" id="voltageInput">
+        <label for="currentInput">Enter Current (mA):</label>
+        <input type="number" id="currentInput">
+        <button onclick="addRow()">Add Row</button>
+      </div>
+    
+      <script>
+        function addRow() {
+          const voltageInput = document.getElementById('voltageInput');
+          const currentInput = document.getElementById('currentInput');
+    
+          // Get user input values
+          const voltage = parseFloat(voltageInput.value);
+          const current = parseFloat(currentInput.value);
+    
+          if (isNaN(voltage) || isNaN(current)) {
+            alert('Please enter valid voltage and current values.');
+            return;
+          }
+    
+          // Calculate Resistance (R = V / I) and Power (P = V * I)
+          const resistance = (voltage / (current / 1000)).toFixed(2); // Convert current from mA to A for resistance calculation
+          const power = (voltage * (current)).toFixed(2); // Convert current from mA to A for power calculation
+    
+          // Get table body
+          const tableBody = document.getElementById('ohmsTableBody');
+    
+          // Create new row HTML
+          const newRow = `<tr>
+            <td>${tableBody.rows.length + 1}</td>
+            <td>${voltage}</td>
+            <td>${current}</td>
+            <td>${resistance}</td>
+            <td>${power}</td>
+          </tr>`;
+    
+          // Append new row to the table
+          tableBody.insertAdjacentHTML('beforeend', newRow);
+    
+          // Clear input fields after adding row
+          voltageInput.value = '';
+          currentInput.value = '';
+        }
+      </script>
+
+<a href="t2.html" style="text-align: center;">
+    <button>Table 2-></button>
+  </a>
+</body>
+</html>

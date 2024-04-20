@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Roboto';
+    opacity: 0;
+    transition: all .6s;
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+.phone-status-bar{
+    background-color: #128C7E;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    font-weight: 200;
+    position: relative;
+}
+.phone-status-bar i{
+   padding-right: 1rem;
+   font-size: 1.3rem;
+   cursor: pointer;
+}
+.heading-primary{
+    font-family: 'Lato', sans-serif;
+    font-size: 1.5rem;
+}
+
+.menu-bar{
+    background-color: #128C7E;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    
+ }
+
+ 
+ .fixed-menu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+ .menu-bar i{
+     margin: 0 10px;
+     opacity: .8;
+ }
+
+.menu-bar__list{
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: 800;
+    list-style: none;
+    display: flex;
+    justify-content:space-between;
+}
+
+.menu-bar__list-item{
+    opacity: .8;
+    padding: .8rem 1rem;
+    border-bottom: 2px solid transparent;
+    transition: all .2s ease-in-out;
+}
+
+
+
+.active-select-menu ,.menu-bar__list-item:hover{
+    opacity: 1;
+    cursor: pointer;
+    border-bottom: 3px solid #fff;
+}
+
+
+
+.chat-container{
+    padding:.6rem 0;
+}
+
+.chat-list{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 6px 0;
+   font-size: 62.5%;
+   position: relative;
+}
+
+.chat-list::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right:1rem;
+    width: 76%;
+    height: 1px;
+    background: rgba(0,0,0,.2);
+}
+.person-chat{
+    font-size:20px;
+}
+.tick{
+    color:blue;
+    font-weight: bold;
+}
+.tick2{
+    color:blue;
+    margin-left:-10px;
+    font-weight:bold;
+}
+@media only screen and (max-width: 360px) {
+    .chat-list::after{
+        width: 64%;
+    }
+     
+}
+
+@media only screen and (min-width: 540px) {
+    .chat-list::after{
+        width: 78%;
+    }
+     
+}
+  
+@media only screen and (min-width: 1100px) {
+    .chat-list::after{
+        width: 92%;
+    }
+     
+}
+.user-img{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    margin: 0 1rem;
+   
+}
+
+.person-profile{
+   display: flex;
+   align-items: center;
+}
+
+.last-chat-time{
+    margin-right:2rem;
+}
+
+
+/* Status  */
+
+.status-container{
+    padding: 1rem 0;
+}
+
+
+.person-profile-status{
+position: relative;
+border-bottom: 1px solid rgba(0,0,0,.2);
+padding-bottom: 1rem;
+}
+
+.user-img-status{
+    border: 2px solid #25D366;
+    padding:2px;
+}
+
+.recent-update{
+    font-size: 1rem;
+    background: #ECE5DD;
+    padding: 8px;
+    margin-bottom: 1rem;
+}
+
+.add-icon{
+    position: absolute;
+    left: 4rem;
+    bottom: 20px;
+    color: #fff;
+    background:#25D366;
+    padding: 6px 7.5px;
+    border-radius: 50%;
+}
+
+.call-icon{
+  font-size: 1.5rem !important;
+  color: #128C7E;
+}
+
+
+.status-list-fixed,.contact-list,.call-list{
+    width: 80px;
+    height: 80px;
+    position: fixed;
+    bottom: 4rem;
+    right: 5px;
+    z-index: 1;
+}
+
+.status-list-fixed i,.contact-list i,.call-list i{
+    color: dimgrey;
+    background: #ECE5DD;
+    padding: 1rem 1.1rem;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+
+.contact-list,.call-list{
+  bottom: 5px;
+}
+
+
+
+.call-list i{
+    background-color: #25D366;
+    color: #fff;
+    padding: 1rem 1.2rem;
+}
+
+.contact-list i{
+    background-color: #25D366;
+    color: #fff;
+    padding: 1rem;
+}
+
+.status-list-fixed i:last-child{
+    background-color: #25D366;
+    color: #fff;
+}
+
+
+    </style>
+</head>
+<body>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>WhatsApp</title>
+      <link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
+  </head>
+  <body>
+  
+      <div class="phone-status-bar">
+          <h1 class="heading-primary">DIGITAL LAB</h1>
+          <div class="phone-status-bar__right-icon">
+             <i class="fa fa-search" aria-hidden="true"></i> 
+             <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+          </div>
+      </div>
+  
+      <div class="menu-bar">
+          <i class="fa fa-camera" aria-hidden="true"></i> 
+          <ul class="menu-bar__list">
+              <li class="menu-bar__list-item" onclick="changeTab(1);">P-I</li>
+              <li class="menu-bar__list-item" onclick="changeTab(2);">P-II</li>
+              <li class="menu-bar__list-item" onclick="changeTab(3);">Programs</li>
+          </ul>
+      </div>
+  
+     <div class="chat-status-call">
+           <div class="chat-container">
+  
+               <div class="contact-list">
+                      <i class="material-icons">
+                              chat
+                              </i>
+               </div>
+  
+                  <div class="chat-list">
+                      <div class="person-profile">
+                          <img src="https://5.imimg.com/data5/UE/VA/MY-5862332/surface-tension-apparatus-500x500.jpg" alt="" class="user-img">
+                          <div class="person-name">
+                                  <h1 class="persion-name-heading">
+                                          'Y' by vibration
+                                  </h1>
+                                  <p class="person-chat"></p>
+                          </div>
+                      </div>
+                      
+                  </div>
+          
+                          <div class="chat-list">
+                                  <div class="person-profile">
+                                      <img src="xd.png" alt="" class="user-img">
+                                      <div class="person-name">
+                                              <h1 class="persion-name-heading">
+                                                     Moment of Inertia by Bifilar suspension
+                                              </h1>
+                                      </div>
+                                    </div>
+                              </div>
+          
+                              <div class="chat-list">
+                                      <div class="person-profile">
+                                          <img src="quink.jpg" alt="mark" class="user-img ">
+                                          <div class="person-name">
+                                                  <h1 class="persion-name-heading">
+                                                         Surface tension of mercury by Quincke's Method
+                                                  </h1>
+                                                  <p class="person-chat"></p>
+                                          </div>
+                                      </div>
+                                  </div>
+          
+          
+                                  <div class="chat-list">
+                                          <div class="person-profile">
+                                              <img src="cro.jpg" alt="" class="user-img">
+                                              <div class="person-name">
+                                                      <h1 class="persion-name-heading">
+                                                            Core losses in transformers
+                                                      </h1>
+                                                      <p class="person-chat"></p>
+                                              </div>
+                                          </div>
+                                          
+                                      </div>
+                                      
+                                      <div class="chat-list">
+                                              <div class="person-profile">
+                                                  <img src="ander.jpg" alt="" class="user-img">
+                                                  <div class="person-name">
+                                                          <h1 class="persion-name-heading">
+                                                               Self Inductance by Anderson's Bridge
+                                                          </h1>
+                                                          <p class="person-chat">Yalgaar Ho..<span class="tick">&#10003;</span><span class="tick2">&#10003;</span></p>
+  </p>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          
+                                          
+                                          <div class="chat-list">
+                                              <div class="person-profile">
+                                                  <img src="lloyd.jpg" alt="" class="user-img">
+                                                  <div class="person-name">
+                                                          <h1 class="persion-name-heading">
+                                                              Lloyd's mirror
+                                                          </h1>
+   <p class="person-chat"><span class="tick">&#10003;</span><span class="tick2">&#10003;</span></p>
+                                                  </div>
+                                              </div>
+                                          </div>
+          
+          
+                                      <div class="chat-list">
+                                              <div class="person-profile">
+                                                  <img src="mano.jpg" alt="" class="user-img">
+                                                  <div class="person-name">
+                                                          <h1 class="persion-name-heading">
+                                                                  Surface tension y Fergusson method
+                                                          </h1>
+                                                          <p class="person-chat"></p>
+                                                  </div>
+                                              </div>
+                                          </div>
+          
+                                          <div class="chat-list">
+                                                  <div class="person-profile">
+                                                      <img src="gay-light.jpg" alt="" class="user-img">
+                                                      <div class="person-name">
+                                                              <h1 class="persion-name-heading">
+                                                                      Determination of resolving power of grating
+                                                              </h1>
+                                                              <p class="person-chat"></p>
+                                                      </div>
+                                                  </div>
+                                              </div>
+          
+              
+           <div class="status-container">
+  
+                  <div class="status-list-fixed">
+                          <i class="fa fa-pencil fa-2x" aria-hidden="true"></i>
+                          <i class="fa fa-camera-retro fa-2x" aria-hidden="true"></i>
+                   </div>
+      
+               
+                  <div class="person-profile person-profile-status">
+                       <i class="fa fa-plus add-icon" aria-hidden="true"></i>   
+                      <img src="https://www.searchpng.com/wp-content/uploads/2019/02/Deafult-Profile-Pitcher.png" alt="" class="user-img">
+                      <div class="person-name">
+                        <h2 class="persion-name-heading">  My status </h2>
+                        <p class="person-chat">Tap to see add status upadte</p>
+                     </div>
+                  </div>
+                  <h2 class="recent-update">Recent updates
+                  </h2>
+  
+                  <div class="chat-list">
+                                  <div class="person-profile">
+                                      <img src="https://thumbor.forbes.com/thumbor/fit-in/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F5c7d7829a7ea434b351ba0b6%2F0x0.jpg%3Fbackground%3D000000%26cropX1%3D206%26cropX2%3D2043%26cropY1%3D250%26cropY2%3D2089" alt="" class="user-img user-img-status">
+                                      <div class="person-name">
+                                              <h1 class="persion-name-heading">
+                                                      Mukesh Ambani
+                                              </h1>
+                                              <p class="person-chat">42 minutes ago</p>
+                                      </div>
+                                  </div>
+                   </div>
+                    
+           </div>
+  
+           <div class="call-container">
+  
+                  <div class="call-list">
+                          <i class="fa fa-phone fa-2x" aria-hidden="true"></i>
+                   </div>
+                          <div class="chat-list">
+                                 <div class="person-profile">
+                                       <img src="https://img.etimg.com/thumb/width-640,height-480,imgsize-75490,resizemode-1,msid-75729632/coronavirus-us-president-donald-trump-to-look-into-legislation-proposing-to-sanctions-on-china.jpg" alt="" class="user-img">
+                                           <div class="person-name">
+                                                <h1 class="persion-name-heading">
+                                                    Donald Trump
+                                                </h1>
+                                                <p class="person-chat"> Today, 1:22am</p>
+                                             </div>
+                                  </div>
+                              <p class="last-chat-time"><i class="fa fa-phone fx-4x call-icon" aria-hidden="true"></i></p>
+                          </div>
+  
+                          <div class="chat-list">
+                              <div class="person-profile">
+                                    <img src="https://c.ndtvimg.com/2020-03/6qjpm0h8_narendra-modi-address-pti_625x300_19_March_20.jpg" alt="" class="user-img" alt="" class="user-img">
+                                        <div class="person-name">
+                                             <h1 class="persion-name-heading">
+                                                Narendra Modi
+                                             </h1>
+                                             <p class="person-chat"> Today, 2 :22am</p>
+                                          </div>
+                               </div>
+                           <p class="last-chat-time"><i class="fa fa-video-camera call-icon" aria-hidden="true"></i></p>
+                       </div>
+           </div>
+  
+     
+          </div> 
+     
+  <script>
+    let menuBar;
+let fixedMenu;
+let statusBar;
+let chartBar;
+let active;
+let callBar;
+let chatCallStatus;
+
+window.onload = function(){
+
+     setTimeout(() => {
+       document.querySelector('body').style.opacity = '1';
+     }, 500);
+    
+     menuBar = document.querySelector('.menu-bar');
+     fixedMenu = menuBar.offsetTop;
+     statusBar = document.querySelector('.status-container');
+     chartBar = document.querySelector('.chat-container');
+     active = document.getElementsByClassName('menu-bar__list-item');
+     callBar = document.querySelector('.call-container');
+     chatCallStatus = document.querySelector('.chat-status-call');
+     statusBar.remove();
+     callBar.remove();
+     changeTab(1);
+    
+    
+window.onscroll = function(){
+  
+    if (window.pageYOffset >= fixedMenu) {
+        menuBar.classList.add("fixed-menu")
+      } else {
+        menuBar.classList.remove("fixed-menu");
+      }
+}
+}
+
+function changeTab(index){
+
+    for(var i=0; i < 3 ; i++)
+      active[i].classList.remove('active-select-menu');  
+      active[index-1].classList.add('active-select-menu');
+     if(index == 1){
+        statusBar.remove();
+        callBar.remove()
+        $(chatCallStatus).append(chartBar);
+      
+     }
+    else if(index == 2 ){
+      chartBar.remove();
+      callBar.remove();
+      $(chatCallStatus).append(statusBar);
+    
+    }
+
+    else if(index == 3 ){
+      chartBar.remove();
+      statusBar.remove();
+      $(chatCallStatus).append(callBar);
+    }
+
+}
+  </script>
+  </body>
+  </html>
+</body>
+</html>

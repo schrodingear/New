@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>C Code Example</title>
+</head>
+<body>
+    <h1>C Code Example</h1>
+
+    <h2>Program to Determine Gas Pressures in C</h2>
+
+    <pre>
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+
+int main()
+{
+    float p1, p2, V, R = 8.314, T = 300, n = 100, a = 0.2283, b = 0.00004278;
+
+    for (V = 100; V <= 300; V += 25)
+    {
+        p1 = n * R * T / V; /* Ideal gas equation */
+        p2 = (n * R * T) / (V - n * b) - (a * n * n) / (V * V); /* Van der Waals equation */
+
+        p1 = p1 / (1.013e5); /* Convert to atm from pascal */
+        p2 = p2 / (1.013e5);
+        printf("Volume: %f\t Pressure of - ideal gas: %f atm, real gas: %f atm\n", V, p1, p2);
+    }
+
+    getch();
+}
+    </pre>
+</body>
+</html>

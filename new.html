@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>C Code Example</title>
+</head>
+<body>
+    <h1>C Code Example</h1>
+
+    <h2>Newton-Raphson Method in C</h2>
+
+    <pre>
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+#include &lt;math.h&gt;
+
+#define f(x) (x*x*x+x-1)
+#define fd(x) (3*x*x+1)
+
+int main()
+{
+    float x0, x1, e;
+    int num = 0;
+    printf("Enter initial guess: ");
+    scanf("%f", &x0);
+    printf("Enter error: ");
+    scanf("%f", &e);
+
+    do
+    {
+        x1 = x0 - (f(x0) / fd(x0));
+        x0 = x1;
+        num += 1;
+    }
+    while (fabs(f(x1)) >= e);
+
+    printf("Root of the equation: %f\n", x0);
+    printf("Number of iterations: %d", num);
+    getch();
+}
+    </pre>
+</body>
+</html>

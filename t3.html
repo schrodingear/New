@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resistance and Radiated Power Table</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+</head>
+<body>
+  <h1>Resistance and Radiated Power Table</h1>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Xn (Ohm)</th>
+        <th>Radiated Power (mW)</th>
+        <th>log10(Xn)</th>
+        <th>log10(PN)</th>
+      </tr>
+    </thead>
+    <tbody id="resistanceTableBody">
+      <!-- Rows will be generated dynamically -->
+    </tbody>
+  </table>
+
+  <div>
+    <label for="xnInput">Enter Xn (Ohm):</label>
+    <input type="number" id="xnInput">
+    <label for="radiatedPowerInput">Enter Radiated Power (mW):</label>
+    <input type="number" id="radiatedPowerInput">
+    <button onclick="addRow()">Add Row</button>
+  </div>
+
+  <script>
+    function addRow() {
+      const xnInput = document.getElementById('xnInput');
+      const radiatedPowerInput = document.getElementById('radiatedPowerInput');
+
+      // Get user input values
+      const xn = parseFloat(xnInput.value);
+      const radiatedPower = parseFloat(radiatedPowerInput.value);
+
+      if (isNaN(xn) || isNaN(radiatedPower)) {
+        alert('Please enter valid values for Xn and Radiated Power.');
+        return;
+      }
+
+      // Calculate base-10 logarithms
+      const logXn = Math.log10(xn).toFixed(2);
+      const logPN = Math.log10(radiatedPower).toFixed(2);
+
+      // Get table body
+      const tableBody = document.getElementById('resistanceTableBody');
+
+      // Create new row HTML
+      const newRow = `<tr>
+        <td>${tableBody.rows.length + 1}</td>
+        <td>${xn}</td>
+        <td>${radiatedPower} mW</td>
+        <td>${logXn}</td>
+        <td>${logPN}</td>
+      </tr>`;
+
+      // Append new row to the table
+      tableBody.insertAdjacentHTML('beforeend', newRow);
+
+      // Clear input fields after adding row
+      xnInput.value = '';
+      radiatedPowerInput.value = '';
+    }
+  </script>
+
+  <h2> Slope: <input style="width: 60%;"></h2>
+</body>
+</html>

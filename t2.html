@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+</head>
+<body>
+    <p><strong>Table 2:</strong>From graph of Total Power vs Resistance</p> 
+<body>
+  <h3>Resistance and Radiated Power Table</h3>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Resistance (Ohm)</th>
+        <th>Radiated Power (mW)</th>
+      </tr>
+    </thead>
+    <tbody id="resistanceTableBody">
+      <!-- Rows will be generated dynamically -->
+    </tbody>
+  </table>
+
+  <div>
+    <label for="resistanceInput">Enter Resistance (Ohm):</label>
+    <input type="number" id="resistanceInput">
+    <button onclick="addRow()">Add Row</button>
+  </div>
+
+  <script>
+    function addRow() {
+      const resistanceInput = document.getElementById('resistanceInput');
+
+      // Get user input value
+      const resistance = parseFloat(resistanceInput.value);
+
+      if (isNaN(resistance)) {
+        alert('Please enter a valid resistance value.');
+        return;
+      }
+
+      // Calculate Radiated Power (P = V^2 / R)
+      const voltage = 5; // Example voltage value (can be changed)
+      const power = ((voltage ** 2) / resistance).toFixed(2); // Radiated power in milliwatts
+
+      // Get table body
+      const tableBody = document.getElementById('resistanceTableBody');
+
+      // Create new row HTML
+      const newRow = `<tr>
+        <td>${tableBody.rows.length + 1}</td>
+        <td>${resistance}</td>
+        <td>${power} mW</td>
+      </tr>`;
+
+      // Append new row to the table
+      tableBody.insertAdjacentHTML('beforeend', newRow);
+
+      // Clear input field after adding row
+      resistanceInput.value = '';
+    }
+  </script><br><br>
+  <a href="t3.html" style="text-align: center;">
+    <button>Table 3-></button>
+  </a>
+</body>
+</html>
